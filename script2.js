@@ -1,10 +1,10 @@
 function fetchJobs() {
     const qualification = document.getElementById("job-qualification").value;
     const jobList = document.getElementById("jobList");
-    jobList.innerHTML = ""; // Clear previous results
+    jobList.innerHTML = ""; 
 
     if (!qualification) {
-        return; // Exit if no qualification is selected
+        return; 
     }
 
     const jobs = {
@@ -14,6 +14,12 @@ function fetchJobs() {
             { name: "Police Constable", info: "State police recruitment exams for constable posts.", url: "https://www.sarkariresult.com" },
             { name: "Peon", info: "Support staff roles in various government departments.", url: "https://www.ncs.gov.in" },
             { name: "Home Guard", info: "Recruitment for home guard positions in state police forces.", url: "https://www.sarkariresult.com" }
+        ],
+        "11th": [
+            { name: "Part-Time Tutor", info: "Teach younger students in subjects like Math or English.", url: "https://www.tutor.com" },
+            { name: "Internship in Local Businesses", info: "Intern in small local businesses to learn basics of administration.", url: "https://www.internshala.com" },
+            { name: "Assistant in NGO", info: "Work as an assistant in a non-governmental organization.", url: "https://www.ngoportal.org" },
+            { name: "Sales Intern", info: "Part-time sales job to understand the market and customer behavior.", url: "https://www.freshersworld.com" }
         ],
         "12th": [
             { name: "Police Constable", info: "State police recruitment exams for constable posts.", url: "https://www.sarkariresult.com" },
