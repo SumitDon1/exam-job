@@ -1,60 +1,61 @@
-
 function fetchExams() {
     const qualification = document.getElementById("qualification").value;
     const examList = document.getElementById("examList");
-    examList.innerHTML = ""; 
+    examList.innerHTML = ""; // Clear previous results
 
     if (!qualification) {
-        return; 
+        return; // Exit if no qualification is selected
     }
 
     const exams = {
         "10th": [
-            { name: "NDA Exam", info: "National Defence Academy Exam for joining the armed forces." },
-            { name: "RRC Group D", info: "Railway Recruitment Cell Group D exam for various posts." },
-            { name: "SSC MTS", info: "Staff Selection Commission Multi-Tasking Staff for clerical and administrative roles." },
-            { name: "Indian Navy MR", info: "Indian Navy Matric Recruit for positions such as Chef, Steward, and Hygienist." }
-        ],
-        "11th": [
-            { name: "NTSE", info: "National Talent Search Examination for scholarships." },
-            { name: "KVPY", info: "Kishore Vaigyanik Protsahan Yojana for scholarships in basic sciences." },
-            { name: "JEE (Main) Preparation", info: "Early preparation for JEE Main exam for engineering colleges." }
+            { name: "SSC MTS", info: "Multi-Tasking Staff exam conducted by SSC.", url: "https://ssc.nic.in" },
+            { name: "Railway Group D", info: "Entry-level jobs in Indian Railways.", url: "https://www.rrbcdg.gov.in" },
+            { name: "State Police Constable", info: "State-level police constable recruitment exams.", url: "https://www.sarkariresult.com" },
+            { name: "Army Soldier (General Duty)", info: "Entry-level soldier positions in the Indian Army.", url: "https://joinindianarmy.nic.in" },
+            { name: "Home Guard", info: "Recruitment for Home Guard positions in various states.", url: "https://www.ncs.gov.in" }
         ],
         "12th": [
-            { name: "JEE Main", info: "Joint Entrance Examination for admission to engineering colleges." },
-            { name: "NEET", info: "National Eligibility cum Entrance Test for medical courses." },
-            { name: "CLAT", info: "Common Law Admission Test for admission to law colleges." },
-            { name: "NIFT", info: "National Institute of Fashion Technology Entrance Exam for fashion courses." }
+            { name: "SSC CHSL", info: "Combined Higher Secondary Level Exam for clerical positions.", url: "https://ssc.nic.in" },
+            { name: "NDA Exam", info: "National Defence Academy entrance exam for 12th pass candidates.", url: "https://www.nda.nic.in" },
+            { name: "IBPS Clerk", info: "Clerical exam for public sector banks in India.", url: "https://www.ibps.in" },
+            { name: "Railway Loco Pilot", info: "Assistant Loco Pilot exam in Indian Railways.", url: "https://www.rrbcdg.gov.in" },
+            { name: "Air Force Group X & Y", info: "Recruitment exam for technical and non-technical trades in Indian Air Force.", url: "https://airmenselection.cdac.in" }
         ],
         "bsc": [
-            { name: "CSIR NET", info: "Council of Scientific & Industrial Research NET for PhD and lecturership." },
-            { name: "IIT JAM", info: "Joint Admission Test for Masters for admission to M.Sc." },
-            { name: "UPSC CSE", info: "Union Public Service Commission Civil Services Examination for administrative positions." },
-            { name: "SSC CGL", info: "Staff Selection Commission Combined Graduate Level Exam for various government jobs." }
+            { name: "IBPS PO", info: "Probationary Officer exam for various public sector banks.", url: "https://www.ibps.in" },
+            { name: "UPSC CDS", info: "Combined Defence Services exam conducted by UPSC.", url: "https://www.upsc.gov.in" },
+            { name: "SSC CGL", info: "Combined Graduate Level Exam for recruitment in government departments.", url: "https://ssc.nic.in" },
+            { name: "Indian Forest Service (IFS)", info: "Exam for recruitment to forestry services conducted by UPSC.", url: "https://www.upsc.gov.in" },
+            { name: "NABARD Grade A & B", info: "Officer recruitment exam for the National Bank for Agriculture and Rural Development.", url: "https://www.nabard.org" }
         ],
         "msc": [
-            { name: "GATE", info: "Graduate Aptitude Test in Engineering for higher studies and jobs." },
-            { name: "UGC NET", info: "University Grants Commission National Eligibility Test for lecturership." },
-            { name: "ICAR JRF", info: "Indian Council of Agricultural Research Junior Research Fellowship for PhD programs." },
-            { name: "NABARD Grade A", info: "National Bank for Agriculture and Rural Development exam for Grade A officers." }
+            { name: "NET Exam", info: "National Eligibility Test for teaching and research.", url: "https://ugcnet.nta.nic.in" },
+            { name: "CSIR NET", info: "Council of Scientific and Industrial Research NET exam.", url: "https://csirnet.nta.nic.in" },
+            { name: "GATE", info: "Graduate Aptitude Test in Engineering for M.Tech admissions and PSU jobs.", url: "https://gate.iitb.ac.in" },
+            { name: "ICMR JRF", info: "Junior Research Fellowship for biomedical research.", url: "https://www.icmr.nic.in" },
+            { name: "Agricultural Research Scientist (ARS)", info: "Recruitment for scientists in the agricultural sector.", url: "https://www.asrb.org.in" }
         ],
         "btech": [
-            { name: "GATE", info: "Graduate Aptitude Test in Engineering for higher studies and jobs." },
-            { name: "IES", info: "Indian Engineering Services for a career in public sector engineering roles." },
-            { name: "CAT", info: "Common Admission Test for admission to management programs (MBA)." },
-            { name: "CDS", info: "Combined Defence Services Exam for recruitment into the Indian Military, Navy, and Air Force." }
+            { name: "GATE", info: "Graduate Aptitude Test in Engineering for M.Tech admissions and PSU jobs.", url: "https://gate.iitb.ac.in" },
+            { name: "IES", info: "Indian Engineering Services exam conducted by UPSC.", url: "https://www.upsc.gov.in" },
+            { name: "ISRO Scientist/Engineer", info: "Recruitment for scientists/engineers in ISRO.", url: "https://www.isro.gov.in" },
+            { name: "BARC OCES/DGFS", info: "Training program for scientific officers at Bhabha Atomic Research Centre.", url: "https://www.barc.gov.in" },
+            { name: "State Public Service Commission (PSC)", info: "Engineering posts in various state government departments.", url: "https://psc.ap.gov.in" }
         ],
         "mtech": [
-            { name: "PhD Entrance Exam", info: "Entrance exams for pursuing PhD in various disciplines." },
-            { name: "ISRO Scientist Exam", info: "Recruitment exam for scientist positions at Indian Space Research Organisation." },
-            { name: "DRDO Scientist B", info: "Defence Research and Development Organisation Scientist Entry exam." },
-            { name: "UGC NET", info: "University Grants Commission National Eligibility Test for lecturership and research." }
+            { name: "PhD Entrance Exam", info: "Various PhD entrance exams conducted by universities.", url: "https://csirnet.nta.nic.in" },
+            { name: "DRDO Scientist Entry", info: "Recruitment for scientists in DRDO.", url: "https://www.drdo.gov.in" },
+            { name: "ISRO Scientist/Engineer SC", info: "Higher level scientist positions in ISRO.", url: "https://www.isro.gov.in" },
+            { name: "Naval Armament Inspectorate (NAI)", info: "Recruitment for NAI cadre in the Indian Navy.", url: "https://www.joinindiannavy.gov.in" },
+            { name: "Teaching Assistant", info: "Teaching roles in engineering colleges.", url: "https://www.facultyplus.com" }
         ],
         "phd": [
-            { name: "Postdoctoral Fellowship", info: "Various postdoctoral fellowship exams in different subjects." },
-            { name: "Fulbright Fellowship", info: "Prestigious fellowship for academic and research opportunities in the USA." },
-            { name: "ICMR JRF", info: "Indian Council of Medical Research Junior Research Fellowship for medical research." },
-            { name: "DAAD Research Grant", info: "German Academic Exchange Service grant for postdoctoral research in Germany." }
+            { name: "Postdoctoral Fellowship", info: "Fellowship opportunities in various research institutes.", url: "https://www.serbonline.in/SERB/HomePage" },
+            { name: "Assistant Professor Positions", info: "Vacancies for assistant professors in universities.", url: "https://www.ugc.ac.in" },
+            { name: "Research Scientist", info: "Research roles in private and public research organizations.", url: "https://www.csir.res.in" },
+            { name: "Policy Research Fellow", info: "Fellowship opportunities in government think tanks.", url: "https://www.orfonline.org" },
+            { name: "Chief Scientist", info: "Senior scientific roles in government and private organizations.", url: "https://www.nature.com/naturecareers" }
         ]
     };
 
@@ -62,14 +63,8 @@ function fetchExams() {
         exams[qualification].forEach(exam => {
             const examElement = document.createElement("div");
             examElement.classList.add("exam-item", "mt-2", "p-2", "border", "rounded");
-            examElement.innerHTML = `<strong>${exam.name}</strong>: <a href="#" onclick="openExamInfo('${exam.info}')">Learn More</a>`;
+            examElement.innerHTML = `<strong>${exam.name}</strong>: ${exam.info} <a href="${exam.url}" target="_blank">Learn More</a>`;
             examList.appendChild(examElement);
         });
     }
-}
-
-function openExamInfo(info) {
-    const newTab = window.open();
-    newTab.document.write(`<html><head><title>Exam Information</title></head><body><h2>Exam Information</h2><p>${info}</p></body></html>`);
-    newTab.document.close();
 }
