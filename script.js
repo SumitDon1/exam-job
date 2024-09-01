@@ -1,70 +1,80 @@
 function fetchExams() {
     const qualification = document.getElementById("qualification").value;
     const examList = document.getElementById("examList");
-    examList.innerHTML = ""; // Clear previous results
+    examList.innerHTML = ""; 
 
     if (!qualification) {
-        return; // Exit if no qualification is selected
+        return; 
     }
 
     const exams = {
         "10th": [
-            { name: "SSC MTS", info: "Multi-Tasking Staff exam conducted by SSC.", url: "https://ssc.nic.in" },
-            { name: "Railway Group D", info: "Entry-level jobs in Indian Railways.", url: "https://www.rrbcdg.gov.in" },
-            { name: "State Police Constable", info: "State-level police constable recruitment exams.", url: "https://www.sarkariresult.com" },
-            { name: "Army Soldier (General Duty)", info: "Entry-level soldier positions in the Indian Army.", url: "https://joinindianarmy.nic.in" },
-            { name: "Home Guard", info: "Recruitment for Home Guard positions in various states.", url: "https://www.ncs.gov.in" }
+            { name: "SSC MTS", info: "Multi-Tasking Staff exam conducted by SSC.", age: "18-25 years", url: "https://ssc.nic.in" },
+            { name: "Railway Group D", info: "Entry-level jobs in Indian Railways.", age: "18-33 years", url: "https://www.rrbcdg.gov.in" },
+            { name: "State Police Constable", info: "State-level police constable recruitment exams.", age: "18-22 years", url: "https://www.sarkariresult.com" },
+            { name: "Army Soldier (General Duty)", info: "Entry-level soldier positions in the Indian Army.", age: "17.5-21 years", url: "https://joinindianarmy.nic.in" },
+            { name: "Home Guard", info: "Recruitment for Home Guard positions in various states.", age: "18-35 years", url: "https://www.ncs.gov.in" }
+        ],
+        "11th": [
+            { name: "Junior Science Talent Search Examination (JSTSE)", info: "State-level talent search examination for science students.", age: "14-16 years", url: "https://www.edudel.nic.in" },
+            { name: "NTSE", info: "National Talent Search Examination for scholarship.", age: "15-18 years", url: "https://ncert.nic.in" },
+            { name: "Olympiad Exams", info: "Various Olympiad exams in subjects like Math, Science, etc.", age: "14-18 years", url: "https://sofworld.org" },
+            { name: "KVPY", info: "Kishore Vaigyanik Protsahan Yojana for research careers.", age: "16-18 years", url: "http://kvpy.iisc.ernet.in" }
         ],
         "12th": [
-            { name: "SSC CHSL", info: "Combined Higher Secondary Level Exam for clerical positions.", url: "https://ssc.nic.in" },
-            { name: "NDA Exam", info: "National Defence Academy entrance exam for 12th pass candidates.", url: "https://www.nda.nic.in" },
-            { name: "IBPS Clerk", info: "Clerical exam for public sector banks in India.", url: "https://www.ibps.in" },
-            { name: "Railway Loco Pilot", info: "Assistant Loco Pilot exam in Indian Railways.", url: "https://www.rrbcdg.gov.in" },
-            { name: "Air Force Group X & Y", info: "Recruitment exam for technical and non-technical trades in Indian Air Force.", url: "https://airmenselection.cdac.in" }
+            { name: "SSC CHSL", info: "Combined Higher Secondary Level Exam for clerical positions.", age: "18-27 years", url: "https://ssc.nic.in" },
+            { name: "NDA Exam", info: "National Defence Academy entrance exam for 12th pass candidates.", age: "16.5-19.5 years", url: "https://www.nda.nic.in" },
+            { name: "IBPS Clerk", info: "Clerical exam for public sector banks in India.", age: "20-28 years", url: "https://www.ibps.in" },
+            { name: "Railway Loco Pilot", info: "Assistant Loco Pilot exam in Indian Railways.", age: "18-28 years", url: "https://www.rrbcdg.gov.in" },
+            { name: "Air Force Group X & Y", info: "Recruitment exam for technical and non-technical trades in Indian Air Force.", age: "17-21 years", url: "https://airmenselection.cdac.in" },
+            { name: "JEE Mains", info: "Joint Entrance Examination for admission to undergraduate engineering programs.", age: "No upper age limit", url: "https://jeemain.nta.nic.in" },
+            { name: "JEE Advanced", info: "Advanced level of JEE for admission to IITs.", age: "No upper age limit", url: "https://jeeadv.ac.in" }
         ],
         "bsc": [
-            { name: "IBPS PO", info: "Probationary Officer exam for various public sector banks.", url: "https://www.ibps.in" },
-            { name: "UPSC CDS", info: "Combined Defence Services exam conducted by UPSC.", url: "https://www.upsc.gov.in" },
-            { name: "SSC CGL", info: "Combined Graduate Level Exam for recruitment in government departments.", url: "https://ssc.nic.in" },
-            { name: "Indian Forest Service (IFS)", info: "Exam for recruitment to forestry services conducted by UPSC.", url: "https://www.upsc.gov.in" },
-            { name: "NABARD Grade A & B", info: "Officer recruitment exam for the National Bank for Agriculture and Rural Development.", url: "https://www.nabard.org" }
+            { name: "IBPS PO", info: "Probationary Officer exam for various public sector banks.", age: "20-30 years", url: "https://www.ibps.in" },
+            { name: "UPSC CDS", info: "Combined Defence Services exam conducted by UPSC.", age: "19-25 years", url: "https://www.upsc.gov.in" },
+            { name: "SSC CGL", info: "Combined Graduate Level Exam for recruitment in government departments.", age: "18-32 years", url: "https://ssc.nic.in" },
+            { name: "Indian Forest Service (IFS)", info: "Exam for recruitment to forestry services conducted by UPSC.", age: "21-32 years", url: "https://www.upsc.gov.in" },
+            { name: "NABARD Grade A & B", info: "Officer recruitment exam for the National Bank for Agriculture and Rural Development.", age: "21-30 years", url: "https://www.nabard.org" }
         ],
         "msc": [
-            { name: "NET Exam", info: "National Eligibility Test for teaching and research.", url: "https://ugcnet.nta.nic.in" },
-            { name: "CSIR NET", info: "Council of Scientific and Industrial Research NET exam.", url: "https://csirnet.nta.nic.in" },
-            { name: "GATE", info: "Graduate Aptitude Test in Engineering for M.Tech admissions and PSU jobs.", url: "https://gate.iitb.ac.in" },
-            { name: "ICMR JRF", info: "Junior Research Fellowship for biomedical research.", url: "https://www.icmr.nic.in" },
-            { name: "Agricultural Research Scientist (ARS)", info: "Recruitment for scientists in the agricultural sector.", url: "https://www.asrb.org.in" }
+            { name: "NET Exam", info: "National Eligibility Test for teaching and research.", age: "No upper age limit for Assistant Professorship; JRF: max 30 years", url: "https://ugcnet.nta.nic.in" },
+            { name: "CSIR NET", info: "Council of Scientific and Industrial Research NET exam.", age: "No upper age limit for Lectureship; JRF: max 28 years", url: "https://csirnet.nta.nic.in" },
+            { name: "GATE", info: "Graduate Aptitude Test in Engineering for M.Tech admissions and PSU jobs.", age: "No age limit", url: "https://gate.iitb.ac.in" },
+            { name: "ICMR JRF", info: "Junior Research Fellowship for biomedical research.", age: "Max 28 years", url: "https://www.icmr.nic.in" },
+            { name: "Agricultural Research Scientist (ARS)", info: "Recruitment for scientists in the agricultural sector.", age: "21-32 years", url: "https://www.asrb.org.in" }
         ],
         "btech": [
-            { name: "GATE", info: "Graduate Aptitude Test in Engineering for M.Tech admissions and PSU jobs.", url: "https://gate.iitb.ac.in" },
-            { name: "IES", info: "Indian Engineering Services exam conducted by UPSC.", url: "https://www.upsc.gov.in" },
-            { name: "ISRO Scientist/Engineer", info: "Recruitment for scientists/engineers in ISRO.", url: "https://www.isro.gov.in" },
-            { name: "BARC OCES/DGFS", info: "Training program for scientific officers at Bhabha Atomic Research Centre.", url: "https://www.barc.gov.in" },
-            { name: "State Public Service Commission (PSC)", info: "Engineering posts in various state government departments.", url: "https://psc.ap.gov.in" }
+            { name: "GATE", info: "Graduate Aptitude Test in Engineering for M.Tech admissions and PSU jobs.", age: "No age limit", url: "https://gate.iitb.ac.in" },
+            { name: "IES", info: "Indian Engineering Services exam conducted by UPSC.", age: "21-30 years", url: "https://www.upsc.gov.in" },
+            { name: "ISRO Scientist/Engineer", info: "Recruitment for scientists/engineers in ISRO.", age: "Max 35 years", url: "https://www.isro.gov.in" },
+            { name: "BARC OCES/DGFS", info: "Training program for scientific officers at Bhabha Atomic Research Centre.", age: "26-28 years", url: "https://www.barc.gov.in" },
+            { name: "IAS Exam", info: "Indian Administrative Service exam conducted by UPSC.", age: "21-32 years", url: "https://www.upsc.gov.in" }
         ],
         "mtech": [
-            { name: "PhD Entrance Exam", info: "Various PhD entrance exams conducted by universities.", url: "https://csirnet.nta.nic.in" },
-            { name: "DRDO Scientist Entry", info: "Recruitment for scientists in DRDO.", url: "https://www.drdo.gov.in" },
-            { name: "ISRO Scientist/Engineer SC", info: "Higher level scientist positions in ISRO.", url: "https://www.isro.gov.in" },
-            { name: "Naval Armament Inspectorate (NAI)", info: "Recruitment for NAI cadre in the Indian Navy.", url: "https://www.joinindiannavy.gov.in" },
-            { name: "Teaching Assistant", info: "Teaching roles in engineering colleges.", url: "https://www.facultyplus.com" }
+            { name: "Senior Software Engineer", info: "Develop and manage complex software projects.", age: "No age limit", url: "https://www.hackerrank.com" },
+            { name: "Research Scientist", info: "Lead research and development in scientific organizations.", age: "No age limit", url: "https://www.nature.com/naturecareers" },
+            { name: "Technical Project Manager", info: "Manage technical teams and projects.", age: "No age limit", url: "https://www.projectmanagement.com" },
+            { name: "Product Manager", info: "Oversee the development of products from inception to market.", age: "No age limit", url: "https://www.productmanagementtoday.com" }
         ],
         "phd": [
-            { name: "Postdoctoral Fellowship", info: "Fellowship opportunities in various research institutes.", url: "https://www.serbonline.in/SERB/HomePage" },
-            { name: "Assistant Professor Positions", info: "Vacancies for assistant professors in universities.", url: "https://www.ugc.ac.in" },
-            { name: "Research Scientist", info: "Research roles in private and public research organizations.", url: "https://www.csir.res.in" },
-            { name: "Policy Research Fellow", info: "Fellowship opportunities in government think tanks.", url: "https://www.orfonline.org" },
-            { name: "Chief Scientist", info: "Senior scientific roles in government and private organizations.", url: "https://www.nature.com/naturecareers" }
+            { name: "Professor", info: "Teach and conduct research in universities.", age: "No age limit", url: "https://chroniclevitae.com" },
+            { name: "Principal Scientist", info: "Lead research groups in R&D departments.", age: "No age limit", url: "https://www.indeed.com" },
+            { name: "Chief Technical Officer", info: "Oversee all technical aspects of an organization.", age: "No age limit", url: "https://angel.co" },
+            { name: "Data Science Lead", info: "Lead data-driven projects in tech companies.", age: "No age limit", url: "https://towardsdatascience.com" }
         ]
     };
 
     if (exams[qualification]) {
         exams[qualification].forEach(exam => {
-            const examElement = document.createElement("div");
-            examElement.classList.add("exam-item", "mt-2", "p-2", "border", "rounded");
-            examElement.innerHTML = `<strong>${exam.name}</strong>: ${exam.info} <a href="${exam.url}" target="_blank">Learn More</a>`;
-            examList.appendChild(examElement);
+            const examItem = document.createElement("div");
+            examItem.className = "exam-item";
+            examItem.innerHTML = `
+                <h3>${exam.name}</h3>
+                <p>${exam.info} (Age: ${exam.age})</p>
+                <a href="${exam.url}" target="_blank">Learn More</a>
+            `;
+            examList.appendChild(examItem);
         });
     }
 }
