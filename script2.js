@@ -1,4 +1,3 @@
-// JavaScript to Fetch and Display Jobs Based on Qualification
 function fetchJobs() {
     const qualification = document.getElementById("job-qualification").value;
     const jobList = document.getElementById("jobList");
@@ -10,53 +9,53 @@ function fetchJobs() {
 
     const jobs = {
         "10th": [
-            { name: "Data Entry Operator", info: "Basic data entry jobs in government and private sectors." },
-            { name: "Railway Group D", info: "Entry-level jobs in Indian Railways." },
-            { name: "Police Constable", info: "State police recruitment exams for constable posts." },
-            { name: "Peon", info: "Support staff roles in various government departments." },
-            { name: "Home Guard", info: "Recruitment for home guard positions in state police forces." }
+            { name: "Data Entry Operator", info: "Basic data entry jobs in government and private sectors.", url: "https://www.ncs.gov.in" },
+            { name: "Railway Group D", info: "Entry-level jobs in Indian Railways.", url: "https://www.rrbcdg.gov.in" },
+            { name: "Police Constable", info: "State police recruitment exams for constable posts.", url: "https://www.sarkariresult.com" },
+            { name: "Peon", info: "Support staff roles in various government departments.", url: "https://www.ncs.gov.in" },
+            { name: "Home Guard", info: "Recruitment for home guard positions in state police forces.", url: "https://www.sarkariresult.com" }
         ],
         "12th": [
-            { name: "Police Constable", info: "State police recruitment exams for constable posts." },
-            { name: "Bank Clerk", info: "Bank Clerk exam for various public sector banks." },
-            { name: "SSC CHSL", info: "Combined Higher Secondary Level Exam for various clerical positions." },
-            { name: "Railway Ticket Collector", info: "Recruitment for ticket collectors in Indian Railways." },
-            { name: "Defence Jobs", info: "Various positions in the Indian Army, Navy, and Air Force for 12th pass candidates." }
+            { name: "Police Constable", info: "State police recruitment exams for constable posts.", url: "https://www.sarkariresult.com" },
+            { name: "Bank Clerk", info: "Bank Clerk exam for various public sector banks.", url: "https://www.ibps.in" },
+            { name: "SSC CHSL", info: "Combined Higher Secondary Level Exam for various clerical positions.", url: "https://ssc.nic.in" },
+            { name: "Railway Ticket Collector", info: "Recruitment for ticket collectors in Indian Railways.", url: "https://www.rrbcdg.gov.in" },
+            { name: "Defence Jobs", info: "Various positions in the Indian Army, Navy, and Air Force for 12th pass candidates.", url: "https://www.joinindianarmy.nic.in" }
         ],
         "bsc": [
-            { name: "Lab Assistant", info: "Jobs for lab assistants in educational and research institutions." },
-            { name: "Teaching Assistant", info: "Assistant teacher positions in schools and colleges." },
-            { name: "Bank Probationary Officer", info: "Bank PO exams for public sector banks." },
-            { name: "SSC CGL", info: "Combined Graduate Level Exam for government job positions." },
-            { name: "Scientific Assistant", info: "Recruitment for scientific assistants in government labs." }
+            { name: "Lab Assistant", info: "Jobs for lab assistants in educational and research institutions.", url: "https://www.ncs.gov.in" },
+            { name: "Teaching Assistant", info: "Assistant teacher positions in schools and colleges.", url: "https://www.ctet.nic.in" },
+            { name: "Quality Analyst", info: "Roles in quality control in various industries.", url: "https://www.naukri.com" },
+            { name: "Pharmaceutical Sales Representative", info: "Sales jobs in the pharmaceutical industry.", url: "https://www.pharmatutor.org" },
+            { name: "Field Officer", info: "Field officer roles in agricultural and environmental sectors.", url: "https://www.ncs.gov.in" }
         ],
         "msc": [
-            { name: "Research Associate", info: "Research jobs in universities and research organizations." },
-            { name: "Scientist B", info: "Entry-level scientist positions in organizations like DRDO and ISRO." },
-            { name: "Data Scientist", info: "Data scientist positions in IT and analytics firms." },
-            { name: "Lecturer", info: "Lecturer positions in colleges and universities." },
-            { name: "Government Analyst", info: "Analyst roles in government departments and agencies." }
+            { name: "Research Associate", info: "Research jobs in universities and research organizations.", url: "https://www.ncs.gov.in" },
+            { name: "Data Scientist", info: "Data scientist positions in IT and analytics firms.", url: "https://www.naukri.com" },
+            { name: "Project Coordinator", info: "Coordination roles in research and development projects.", url: "https://www.indeed.co.in" },
+            { name: "Biotech Specialist", info: "Roles in biotechnology firms for research and development.", url: "https://www.biotecnika.org" },
+            { name: "Environmental Scientist", info: "Positions in environmental consulting and government agencies.", url: "https://www.greenjobs.com" }
         ],
         "btech": [
-            { name: "Software Developer", info: "Jobs for software developers in IT companies." },
-            { name: "Junior Engineer", info: "Engineering positions in public sector organizations." },
-            { name: "Civil Services (UPSC)", info: "Civil Services Examination for various administrative roles." },
-            { name: "Graduate Trainee Engineer", info: "Graduate trainee roles in private and public sectors." },
-            { name: "Network Engineer", info: "Jobs for network engineers in telecommunications companies." }
+            { name: "Software Developer", info: "Jobs for software developers in IT companies.", url: "https://www.linkedin.com/jobs" },
+            { name: "Junior Engineer", info: "Engineering positions in public sector organizations.", url: "https://www.upsc.gov.in" },
+            { name: "System Analyst", info: "Analyst roles in IT and consulting firms.", url: "https://www.monsterindia.com" },
+            { name: "Network Engineer", info: "Network management positions in IT companies.", url: "https://www.indeed.co.in" },
+            { name: "Product Manager", info: "Management roles in tech companies.", url: "https://www.naukri.com" }
         ],
         "mtech": [
-            { name: "Senior Engineer", info: "Advanced engineering roles in private and public sectors." },
-            { name: "Technical Consultant", info: "Consulting roles in technology firms." },
-            { name: "Project Manager", info: "Project management roles in IT and engineering firms." },
-            { name: "Research Scientist", info: "Research scientist positions in organizations like ISRO and BARC." },
-            { name: "Engineering Professor", info: "Teaching positions in engineering colleges." }
+            { name: "Senior Engineer", info: "Advanced engineering roles in private and public sectors.", url: "https://www.naukri.com" },
+            { name: "Technical Consultant", info: "Consulting roles in technology firms.", url: "https://www.glassdoor.com" },
+            { name: "Data Architect", info: "Design roles for data systems in large enterprises.", url: "https://www.indeed.co.in" },
+            { name: "Machine Learning Engineer", info: "Specialist roles in AI and machine learning.", url: "https://www.monsterindia.com" },
+            { name: "IT Project Manager", info: "Management roles in IT project delivery.", url: "https://www.linkedin.com/jobs" }
         ],
         "phd": [
-            { name: "Postdoctoral Researcher", info: "Postdoctoral positions in academia and research institutes." },
-            { name: "Assistant Professor", info: "Teaching positions in universities and colleges." },
-            { name: "Chief Scientist", info: "Senior scientific roles in government and private research organizations." },
-            { name: "Research Director", info: "Director roles in research departments of companies and institutions." },
-            { name: "Policy Analyst", info: "Policy research and advisory roles in government and NGOs." }
+            { name: "Postdoctoral Researcher", info: "Postdoctoral positions in academia and research institutes.", url: "https://www.nature.com/naturecareers" },
+            { name: "Assistant Professor", info: "Teaching positions in universities and colleges.", url: "https://www.timeshighereducation.com/unijobs" },
+            { name: "Research Director", info: "Senior research roles in government or private research labs.", url: "https://www.academics.com" },
+            { name: "Senior Scientist", info: "High-level scientific roles in R&D organizations.", url: "https://jobs.sciencemag.org" },
+            { name: "Science Policy Advisor", info: "Advisory roles in government and international agencies.", url: "https://www.un.org/jobs" }
         ]
     };
 
@@ -64,15 +63,9 @@ function fetchJobs() {
         jobs[qualification].forEach(job => {
             const jobElement = document.createElement("div");
             jobElement.classList.add("job-item", "mt-2", "p-2", "border", "rounded");
-            jobElement.innerHTML = `<strong>${job.name}</strong>: <a href="#" onclick="openJobInfo('${job.info}')">Learn More</a>`;
+            jobElement.innerHTML = `<strong>${job.name}</strong>: ${job.info} <a href="${job.url}" target="_blank">Learn More</a>`;
             jobList.appendChild(jobElement);
         });
     }
 }
 
-// Function to Display Job Info in a New Tab
-function openJobInfo(info) {
-    const newTab = window.open();
-    newTab.document.write(`<html><head><title>Job Information</title></head><body><h2>Job Information</h2><p>${info}</p></body></html>`);
-    newTab.document.close();
-}
